@@ -1,14 +1,13 @@
 <script setup>
-import { createWebHistory, createRouter } from "vue-router";
 import MainPage from "./components/MainPage.vue";
-import Header from "./components/Header.vue";
+import HeaderComponent from "./components/HeaderComponent.vue";
 </script>
 
 <template>
   <div class="screen">
     <div class="screen-inner">
-      <Header />
-      <MainPage msg="Main" />
+      <HeaderComponent />
+      <MainPage/>
     </div>
   </div>
 </template>
@@ -24,5 +23,14 @@ import Header from "./components/Header.vue";
 }
 .screen-inner {
   margin: auto;
+}
+
+@media screen and (max-width: 1050px) {
+  .screen {
+    width: 100vw;
+    min-height: 100vh;
+    height: 100%;
+  }
+  
 }
 </style>

@@ -1,22 +1,15 @@
 <script setup>
-import { ref } from "vue";
 import axios from "axios";
-defineProps({
-  msg: String,
-});
-const tileData = await axios.get(`http://127.0.0.1:8000/api/adv-items/`);
+const tileData = await axios.get(`http://77.246.159.10/api/adv-items/`);
 const tiles = await tileData.data.data;
 
-const degNum = 135;
-const degText = "deg";
-const deg = `${degNum}${degText}`
 const classDeg = `main-item_tile`
 </script>
 
 <template>
   <div class="main-item main-item__right">
     <div class="main-grid">
-      <div v-for="(tile, index) in tiles" :class="classDeg + index" class="main-item_tile">
+      <div :key="index" v-for="(tile, index) in tiles" :class="classDeg + index" class="main-item_tile">
         <p style="font-size: 1.3rem;color: rgba(255, 255, 255, 0.671);">{{ tile.adv_title_up }}</p>
         <h2 style="font-size: 4rem;margin:0;color: rgba(255, 255, 255, 0.9);">{{ tile.adv_main }}</h2>
         <p style="font-size: 1.3rem;color: rgba(255, 255, 255, 0.671);">{{ tile.adv_title_down }}</p>
@@ -35,12 +28,12 @@ const classDeg = `main-item_tile`
 .main-item__right {
   display: flex;
   align-items: center;
+  justify-content: right;
 }
 
 .main-grid {
   max-width: 400px;
   display: grid;
-  margin: auto;
   grid-template-columns: repeat(2, 1fr);
   box-sizing: border-box;
 }
